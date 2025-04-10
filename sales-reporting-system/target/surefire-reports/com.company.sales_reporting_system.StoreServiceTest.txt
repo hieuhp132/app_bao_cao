@@ -1,0 +1,18 @@
+-------------------------------------------------------------------------------
+Test set: com.company.sales_reporting_system.StoreServiceTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.053 s <<< FAILURE! -- in com.company.sales_reporting_system.StoreServiceTest
+com.company.sales_reporting_system.StoreServiceTest.testUpdateStoreStatus -- Time elapsed: 0.025 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "com.company.sales_reporting_system.repository.StoreRepository.findById(Object)" because "this.storeRepository" is null
+	at com.company.sales_reporting_system.StoreServiceTest.testUpdateStoreStatus(StoreServiceTest.java:36)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
+com.company.sales_reporting_system.StoreServiceTest.testGetAllStores -- Time elapsed: 0.004 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "com.company.sales_reporting_system.repository.StoreRepository.findAll()" because "this.storeRepository" is null
+	at com.company.sales_reporting_system.StoreServiceTest.testGetAllStores(StoreServiceTest.java:48)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+

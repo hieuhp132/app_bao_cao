@@ -1,0 +1,20 @@
+Database:
+    Chuỗi công ty:
+        thành viên, cửa hàng, khách hàng.
+    Thành viên:
+        sếp tổng, sếp điều hành, nhân viên.
+    Cửa hàng:
+        sản phẩm, sếp điều hành.
+    Khách hàng:
+        Tên, địa chỉ, sđt, tài khoản, mật khẩu.
+
+Pages:
+    đăng nhập, đăng kí (optional)
+    thông báo các sự kiện mới trong công ty
+    đặt hàng từ công ty   
+
+Command:
+    ./mvnw spring-boot:run
+
+Installiert:
+    Spring Maven ( xem lại trong pom.xml )

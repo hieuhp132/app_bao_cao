@@ -1,0 +1,26 @@
+ỨNG DỤNG BÁO CÁO DOANH SỐ CHO CHUỖI CỬA HÀNG:
+
+YÊU CẦU:
+    1. Tự động hóa (schedule):
+        1.1 Mỗi ngày:
+            1.1.1 Cập nhật trạng thái kinh doanh hiện tại.
+                1.1.1.1 Giảm:đỏ; bằng:đen; tăng:xanh; đạt:tim
+        1.2 Mỗi tuần:
+            1.2.1 Thống kê kết quả kinh doanh của cả tuần và so sánh với tuần trước.
+                1.2.1.1 giảm: khuyên, động viên; tăng: khen, chúc mừng.
+            1.2.2 Báo cáo cho cấp trên:
+                1.2.2.1 tổng số của công ty cho sếp tổng
+                1.2.2.2 tổng số của mỗi hệ thống cho sếp điều hành
+                1.2.2.3 tổng số của các cửa hàng theo khu vực cho quản lý vùng
+    
+    2. Thủ công (manuell):
+        2.1 thông báo các công văn, thông báo của công ty
+        2.2 đặt hàng từ công ty
+
+Công nghệ:
+    Stack:
+        Frontend: 
+            react, html, css, js.
+        Backend:
+            spring, mysql.
+    Schedule: Shell Script, Cron Jobs, CI/CD Tools.
