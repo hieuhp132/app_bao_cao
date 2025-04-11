@@ -19,4 +19,12 @@ public class StoreController {
     public List<Store> getStores() {
         return storeRepository.findAll();
     }
+
+    @PutMapping("/{id}/status")
+    public ResponseEntity<Store> updateStoreStatus(@PathVariable Long id, @RequestBody String status) {
+        Store updatedStore = storeService.updateStoreStatus(id, status);
+        return ResponseEntity.ok(updatedStore);
+    }
+
+
 }
