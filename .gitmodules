@@ -1,0 +1,3 @@
+[submodule "app_bao_cao"]
+    path = app_bao_cao
+    url = https://github.com/tanh911/app_bao_cao.git
