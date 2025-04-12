@@ -1,0 +1,5 @@
+-cp
+.;mysql-connector-j-9.2.0.jar
+-d
+out
+csvtodb\\Main.java
