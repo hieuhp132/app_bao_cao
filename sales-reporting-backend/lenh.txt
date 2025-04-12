@@ -1,0 +1,4 @@
+On linux:
+    javac -cp .:mysql-connector-j-9.2.0.jar -d out csvtodb/*.java && java -cp .:mysql-connector-j-9:out csvtodb.Main 
+On window:
+    javac -cp .;mysql-connector-j-9.2.0.jar -d out csvtodb/*.java && java -cp .;mysql-connector-j-9;out csvtodb.Main
