@@ -1,3 +1,0 @@
-Todo:
-    database connection test.
-    database add, remove test.
