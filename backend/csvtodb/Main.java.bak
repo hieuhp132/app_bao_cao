@@ -84,18 +84,18 @@ public class Main {
 				//System.out.println(filesProcess.getLength(csvData));
 				
 				 // Define the column index you're interested in (for example, column 25 is index 24)
-/*				int rows = 25;  // Change this to the column you're interested in
+				int index = 22;  // Change this to the column you're interested in
 
 				Set<String> mySet = new HashSet<>();
 				
 				
-					for(int j = 0; j < rows; j++) {
+					for(int j = 0; j < 25; j++) {
 						mySet = filesProcess.addNewElementWithNoRedundant(csvData, j);
 						System.out.println(mySet);
 						printCharacter('+', 50);
 					}
 				
-*/				
+				
 				
 				//filesProcess.printData(filesProcess.substractData(csvData, 23,25));
 				

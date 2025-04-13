@@ -3,7 +3,6 @@ package csvtodb.database;
 import java.sql.*;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.regex.Pattern; // Import this
 
 public class DataBaseServer implements AutoCloseable {
 

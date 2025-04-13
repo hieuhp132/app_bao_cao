@@ -17,7 +17,7 @@ import csvtodb.database.DataBaseServer;
 public class FilesProcess {
 
     private static Connection connection;
-//	private static String patter = "(){}[]""";
+	
 
     public FilesProcess(Connection connection) {
         connection = connection;
