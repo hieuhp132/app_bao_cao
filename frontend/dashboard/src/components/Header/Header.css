@@ -1,0 +1,25 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+}
+  
+header div {
+display: flex;
+align-items: center;
+}
+
+h1 {
+margin: 0;
+font-size: 1.5rem;
+color: #333;
+}
+
+.right-content h1{
+    font-size: 1rem; /* Hoặc thay đổi tùy ý, ví dụ 14px, 16px, 1.2em,... */
+    color: #333;     /* (tuỳ chọn) chỉnh màu chữ */
+}
+  

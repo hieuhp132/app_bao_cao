@@ -1,3 +1,0 @@
--download expo go to run on ios app
--npm install to install all independencies
--npx expo start to run web on server and can be scanned by qr code
