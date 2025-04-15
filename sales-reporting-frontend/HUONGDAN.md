@@ -1,3 +1,4 @@
--download expo go to run on ios app
--npm install to install all independencies
--npx expo start to run web on server and can be scanned by qr code
+- cd sales-reporting-frontend
+- npm run android
+- npm run ios # you need to use macOS to build the iOS project - use the Expo app if you need to do iOS development without a Mac
+- npm run web
