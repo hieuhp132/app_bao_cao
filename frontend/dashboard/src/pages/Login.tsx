@@ -85,8 +85,8 @@ const Login: React.FC = () => {
 
       // For demo purposes, using hardcoded credentials
       if (formData.email === 'admin@example.com' && formData.password === 'password123') {
-        // Store token or user info in localStorage
-        localStorage.setItem('isAuthenticated', 'true');
+        // Store token in localStorage
+        localStorage.setItem('token', 'mock-token-123');
         localStorage.setItem('userRole', 'admin');
         navigate('/');
       } else {
