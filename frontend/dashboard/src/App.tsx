@@ -18,6 +18,7 @@ import CustomReports from './pages/CustomReports';
 import Login from './pages/Login';
 import PermissionManagement from './pages/PermissionManagement';
 import UserProfile from './pages/UserProfile';
+import Reports from './pages/Reports';
 
 const queryClient = new QueryClient();
 
@@ -103,7 +104,7 @@ function App() {
                   element={
                     <ProtectedRoute>
                       <Layout>
-                        <CustomReports />
+                        <Reports />
                       </Layout>
                     </ProtectedRoute>
                   }
