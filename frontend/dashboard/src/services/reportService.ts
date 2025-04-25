@@ -1,6 +1,7 @@
-import axios from 'axios';
+import axios from "axios";
 
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8080/api';
+const API_BASE_URL =
+  process.env.REACT_APP_API_BASE_URL || "http://localhost:8080/api";
 
 export interface DailyReport {
   storeName: string;
@@ -27,7 +28,7 @@ const reportService = {
       const response = await axios.get(`${API_BASE_URL}/reports/daily`);
       return response.data;
     } catch (error) {
-      console.error('Error fetching daily reports:', error);
+      console.error("Error fetching daily reports:", error);
       throw error;
     }
   },
@@ -37,7 +38,7 @@ const reportService = {
       const response = await axios.get(`${API_BASE_URL}/reports/weekly`);
       return response.data;
     } catch (error) {
-      console.error('Error fetching weekly reports:', error);
+      console.error("Error fetching weekly reports:", error);
       throw error;
     }
   },
@@ -54,10 +55,10 @@ const reportService = {
         weekly: weeklyReports,
       };
     } catch (error) {
-      console.error('Error fetching all reports:', error);
+      console.error("Error fetching all reports:", error);
       throw error;
     }
   },
 };
 
-export default reportService; 
+export default reportService;

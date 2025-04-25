@@ -1,0 +1,131 @@
+ngay,ma_don_hang,ten_san_pham,danh_muc,so_luong,gia,tong,thanh_pho
+2020-01-10,INV1001,Banh mi thit,Thuc an,5,20000,100000,Hai Phong
+2020-02-15,INV1002,Nuoc ep cam,Do uong,3,25000,75000,Ha Noi
+2021-03-20,INV1003,Sinh to bo,Do uong,7,32000,224000,Da Nang
+2022-04-10,INV1004,Nuoc ep cam,Do uong,4,23000,92000,Hai Phong
+2023-05-25,INV1005,Banh mi thit,Thuc an,6,21000,126000,Ha Noi
+2024-06-18,INV1006,Sinh to bo,Do uong,8,35000,280000,Ho Chi Minh
+2020-07-05,INV1007,Banh mi thit,Thuc an,3,18000,54000,Nha Trang
+2021-08-12,INV1008,Nuoc ep cam,Do uong,10,24000,240000,Ha Noi
+2022-09-15,INV1009,Sinh to bo,Do uong,5,31000,155000,Hai Phong
+2023-10-30,INV1010,Banh mi thit,Thuc an,4,20000,80000,Da Nang
+2024-11-05,INV1011,Nuoc ep cam,Do uong,6,23000,138000,Hai Phong
+2020-12-22,INV1012,Sinh to bo,Do uong,2,30000,60000,Ha Noi
+2021-01-18,INV1013,Banh mi thit,Thuc an,7,19000,133000,Ho Chi Minh
+2022-02-05,INV1014,Nuoc ep cam,Do uong,5,25000,125000,Ha Noi
+2023-03-08,INV1015,Sinh to bo,Do uong,6,32000,192000,Da Nang
+2024-04-15,INV1016,Banh mi thit,Thuc an,4,21000,84000,Ho Chi Minh
+2020-06-22,INV1017,Nuoc ep cam,Do uong,8,22000,176000,Nha Trang
+2021-07-17,INV1018,Sinh to bo,Do uong,9,33000,297000,Hai Phong
+2022-08-21,INV1019,Banh mi thit,Thuc an,5,20000,100000,Da Nang
+2023-09-14,INV1020,Nuoc ep cam,Do uong,3,25000,75000,Ho Chi Minh
+2020-01-25,INV1021,Banh mi thit,Thuc an,6,21000,126000,Hai Phong
+2020-03-05,INV1022,Nuoc ep cam,Do uong,4,24000,96000,Ha Noi
+2021-05-17,INV1023,Sinh to bo,Do uong,8,33000,264000,Da Nang
+2022-07-12,INV1024,Nuoc ep cam,Do uong,7,22000,154000,Hai Phong
+2023-06-10,INV1025,Banh mi thit,Thuc an,5,20000,100000,Ha Noi
+2024-08-05,INV1026,Sinh to bo,Do uong,6,34000,204000,Ho Chi Minh
+2020-11-03,INV1027,Banh mi thit,Thuc an,9,19000,171000,Nha Trang
+2021-02-14,INV1028,Nuoc ep cam,Do uong,2,25000,50000,Ha Noi
+2022-05-09,INV1029,Sinh to bo,Do uong,6,31000,186000,Hai Phong
+2023-07-18,INV1030,Banh mi thit,Thuc an,4,20000,80000,Da Nang
+2024-09-01,INV1031,Nuoc ep cam,Do uong,5,23000,115000,Ho Chi Minh
+2020-02-20,INV1032,Sinh to bo,Do uong,8,32000,256000,Hai Phong
+2021-09-03,INV1033,Banh mi thit,Thuc an,3,21000,63000,Ha Noi
+2022-04-28,INV1034,Nuoc ep cam,Do uong,6,25000,150000,Da Nang
+2023-11-10,INV1035,Sinh to bo,Do uong,4,30000,120000,Ho Chi Minh
+2020-05-15,INV1036,Banh mi thit,Thuc an,10,20000,200000,Nha Trang
+2021-10-25,INV1037,Nuoc ep cam,Do uong,7,24000,168000,Ha Noi
+2022-03-30,INV1038,Sinh to bo,Do uong,9,33000,297000,Hai Phong
+2023-12-14,INV1039,Banh mi thit,Thuc an,5,21000,105000,Da Nang
+2024-05-21,INV1040,Nuoc ep cam,Do uong,4,22000,88000,Ho Chi Minh
+2020-07-10,INV1041,Sinh to bo,Do uong,3,32000,96000,Nha Trang
+2021-11-02,INV1042,Banh mi thit,Thuc an,6,21000,126000,Ha Noi
+2022-08-07,INV1043,Nuoc ep cam,Do uong,5,25000,125000,Da Nang
+2023-01-18,INV1044,Sinh to bo,Do uong,8,31000,248000,Ho Chi Minh
+2024-10-03,INV1045,Banh mi thit,Thuc an,7,20000,140000,Hai Phong
+2020-09-06,INV1046,Nuoc ep cam,Do uong,4,23000,92000,Ha Noi
+2021-06-29,INV1047,Sinh to bo,Do uong,5,34000,170000,Da Nang
+2022-10-18,INV1048,Banh mi thit,Thuc an,6,20000,120000,Ho Chi Minh
+2023-02-25,INV1049,Nuoc ep cam,Do uong,7,23000,161000,Hai Phong
+2024-03-16,INV1050,Sinh to bo,Do uong,6,33000,198000,Ha Noi
+2020-11-22,INV1051,Pizza Hưng,Thuc an,4,19000,76000,Hai Duong
+2021-12-09,INV1052,Coca Cola,Do uong,3,25000,75000,Ninh Binh
+2022-05-20,INV1053,Bánh Crepe,Do uong,5,32000,160000,Quang Ngai
+2023-06-30,INV1054,Cơm Tấm,Thuc an,6,21000,126000,Long An
+2024-01-15,INV1055,Bánh Ngọt,Do uong,4,24000,96000,Thanh Hoa
+2020-02-11,INV1056,Sushi Nhật Bản,Do uong,7,33000,231000,Da Lat
+2021-08-19,INV1057,Bánh Pía,Thuc an,3,22000,66000,Quy Nhon
+2022-09-30,INV1058,Trà Sữa,Do uong,2,25000,50000,Quang Nam
+2023-10-10,INV1059,Mì Xào,Thuc an,6,31000,186000,Ninh Thuận
+2024-06-25,INV1060,Bánh Mì Chả Cá,Do uong,5,21000,105000,Son La
+2020-04-08,INV1061,Cà Phê,Do uong,4,23000,92000,Hoa Binh
+2021-11-22,INV1062,Pho,Thuc an,5,32000,160000,Ha Giang
+2022-03-03,INV1063,Cháo Lòng,Do uong,7,20000,140000,Bac Ninh
+2023-12-01,INV1064,Nem Chua,Thuc an,6,24000,144000,Bac Giang
+2024-02-14,INV1065,Bánh Bò,Do uong,8,34000,272000,Nam Dinh
+2020-06-10,INV1066,Bánh Mì Xíu Mại,Thuc an,4,21000,84000,Kon Tum
+2021-07-25,INV1067,Trà Đào,Do uong,5,23000,115000,Tien Giang
+2022-12-12,INV1068,Bánh Bao,Do uong,3,33000,99000,Can Tho
+2023-04-01,INV1069,Cơm Chiên,Thuc an,6,21000,126000,Ben Tre
+2024-07-19,INV1070,Trà Sữa Trân Châu,Do uong,4,22000,88000,Thua Thien Hue
+2020-08-19,INV1071,Bánh Mì Thịt Nướng,Thuc an,7,32000,224000,Phan Thiet
+2021-10-11,INV1072,Chè Ba Màu,Do uong,3,20000,60000,An Giang
+2022-06-25,INV1073,Bánh Cuốn,Thuc an,8,24000,192000,Quang Binh
+2023-09-09,INV1074,Trà Lipton,Do uong,5,35000,175000,Ha Nam
+2024-01-30,INV1075,Bánh Mì Chay,Thuc an,4,21000,84000,Tien Yen
+2020-07-23,INV1076,Bánh Mì Pate,Thuc an,3,25000,75000,Bac Lieu
+2021-12-01,INV1077,Đậu Hủ Chiên,Do uong,6,31000,186000,Vinh Phuc
+2022-11-05,INV1078,Cơm Gà,Thuc an,2,22000,44000,Phu Tho
+2023-05-12,INV1079,Trà Chanh,Do uong,5,23000,115000,Lang Son
+2024-10-17,INV1080,Canh Bún,Thuc an,8,34000,272000,Quy Hop
+2020-09-14,INV1081,Bánh Mì Sài Gòn,Thuc an,4,21000,84000,Hoa Binh
+2021-06-22,INV1082,Trà Thái,Do uong,9,24000,216000,Da Nang
+2022-08-08,INV1083,Cơm Tấm Bì,Thuc an,7,30000,210000,Binh Phuoc
+2023-11-20,INV1084,Bánh Bèo,Thuc an,5,20000,100000,Quang Tri
+2024-03-12,INV1085,Trà Sữa Socola,Do uong,6,22000,132000,Bac Kan
+2020-05-30,INV1086,Sò Huyết Nướng,Thuc an,3,32000,96000,Ben Tre
+2021-10-11,INV1087,Bánh Trung Thu,Thuc an,4,23000,92000,Vinh
+2022-09-09,INV1088,Sữa Đậu Nành,Do uong,5,24000,120000,Ha Nam
+2023-07-30,INV1089,Cơm Gà Hội An,Thuc an,7,21000,147000,Ninh Binh
+2024-11-21,INV1090,Trà Sữa Hồng Trà,Do uong,6,33000,198000,Nha Trang
+2020-08-25,INV1091,Bánh Tráng Trộn,Thuc an,5,20000,100000,Binh Duong
+2021-04-07,INV1092,Cà Phê Sữa,Do uong,6,25000,150000,Hai Duong
+2022-06-14,INV1093,Súp Miso,Do uong,4,30000,120000,Bac Giang
+2023-07-09,INV1094,Bánh Mì Xíu Mại,Thuc an,3,21000,63000,Bac Ninh
+2024-09-20,INV1095,Chè Đậu Xanh,Do uong,5,22000,110000,Ha Noi
+2020-12-15,INV1096,Phở Bò,Thuc an,7,25000,175000,Quang Tri
+2021-06-18,INV1097,Cà Phê Đen,Do uong,9,27000,243000,Da Nang
+2022-11-02,INV1098,Cháo Gà,Thuc an,8,23000,184000,Hai Phong
+2023-09-05,INV1099,Trà Sữa Trái Cây,Do uong,6,24000,144000,Long An
+2024-04-10,INV1100,Bánh Bèo,Thuc an,4,22000,88000,Quy Nhon
+2020-07-10,INV1101,Chè Khúc Bạch,Do uong,5,25000,125000,Thanh Hoa
+2021-11-05,INV1102,Bánh Bao,Thuc an,6,24000,144000,Hai Duong
+2022-10-28,INV1103,Trà Ô Long,Do uong,5,28000,140000,Ninh Thuận
+2023-03-15,INV1104,Bánh Canh,Thuc an,4,22000,88000,Ho Chi Minh
+2024-05-25,INV1105,Trà Sữa Matcha,Do uong,8,35000,280000,Quang Binh
+2020-10-20,INV1106,Mì Xào Hải Sản,Thuc an,7,21000,147000,Son La
+2021-04-14,INV1107,Sushi Cá Hồi,Do uong,6,33000,198000,Quang Ngai
+2022-08-17,INV1108,Cơm Chiên Dương Châu,Thuc an,4,25000,100000,Bac Lieu
+2023-07-21,INV1109,Trà Sữa Trân Châu Đường Đen,Do uong,6,24000,144000,Hoa Binh
+2024-01-02,INV1110,Bánh Pía Sầu Riêng,Thuc an,5,27000,135000,Hai Phong
+2020-05-18,INV1111,Chè Thái,Do uong,3,24000,72000,Ninh Binh
+2021-07-30,INV1112,Cơm Tấm Sườn Nướng,Thuc an,6,22000,132000,An Giang
+2022-12-20,INV1113,Sushi Cơm,Do uong,7,30000,210000,Quy Hop
+2023-04-17,INV1114,Bánh Mì Thịt Xông Khói,Thuc an,4,25000,100000,Thanh Hoa
+2024-06-01,INV1115,Trà Sữa Xoài,Do uong,8,32000,256000,Ho Chi Minh
+2020-03-25,INV1116,Bánh Mì Gà Nướng,Thuc an,5,22000,110000,Vinh
+2021-09-08,INV1117,Cơm Gà Hội An,Thuc an,6,21000,126000,Quy Nhon
+2022-07-13,INV1118,Trà Chanh,Do uong,4,20000,80000,Nam Dinh
+2023-10-07,INV1119,Bánh Tráng Nướng,Thuc an,5,23000,115000,Binh Phuoc
+2024-02-09,INV1120,Trà Đào Cam Sả,Do uong,3,26000,78000,Da Nang
+2020-06-12,INV1121,Chè Sầu Riêng,Do uong,7,28000,196000,Ho Chi Minh
+2021-10-03,INV1122,Canh Chua Cá,Thuc an,4,24000,96000,Bac Giang
+2022-04-16,INV1123,Trà Sữa Socola,Do uong,6,29000,174000,Phu Tho
+2023-11-11,INV1124,Bánh Mì Pate,Thuc an,3,25000,75000,Quang Ninh
+2024-07-29,INV1125,Sinh Tố Dâu,Do uong,5,33000,165000,Nha Trang
+2020-05-09,INV1126,Bánh Bột Lọc,Thuc an,4,23000,92000,Vinh Phuc
+2021-12-20,INV1127,Cơm Nắm,Thuc an,8,22000,176000,Ho Chi Minh
+2022-09-23,INV1128,Chè Đậu Đỏ,Do uong,6,24000,144000,Ha Tinh
+2023-06-18,INV1129,Bánh Pudding,Thuc an,5,20000,100000,Bac Lieu
+2024-01-21,INV1130,Trà Sữa Đen,Do uong,4,31000,124000,Hai Duong

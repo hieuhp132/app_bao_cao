@@ -1,5 +1,7 @@
 package myapp.service;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
@@ -24,4 +26,16 @@ public class ReportService {
             result.get("totalSales").toString()
         };
     }
+
+    public List<Map<String, Object>> get7Days(){
+        List<Map<String, Object>> result  = reportRepo.find7DaysSales();
+        if(result  == null || result.isEmpty()){
+             Map<String, Object> noData = new HashMap<>();
+            noData.put("message", "No data");
+            return List.of(noData);
+        }
+
+        return result ;
+    }
+
 }

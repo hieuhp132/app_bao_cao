@@ -1,21 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Typography,
   IconButton,
   Badge,
   Menu,
-  MenuItem,
   List,
   ListItem,
   ListItemText,
   ListItemIcon,
   Divider,
   Button,
-  Chip,
-  Avatar,
   Tooltip,
-} from '@mui/material';
+} from "@mui/material";
 import {
   Notifications as NotificationsIcon,
   Circle as CircleIcon,
@@ -25,40 +22,39 @@ import {
   Warning as WarningIcon,
   Delete as DeleteIcon,
   Settings as SettingsIcon,
-} from '@mui/icons-material';
+} from "@mui/icons-material";
 
-// Mock notification data
 const mockNotifications = [
   {
     id: 1,
-    title: 'Đơn hàng mới',
-    message: 'Đơn hàng #12345 đã được tạo',
-    type: 'info',
-    timestamp: new Date(Date.now() - 1000 * 60 * 5), // 5 minutes ago
+    title: "Đơn hàng mới",
+    message: "Đơn hàng #12345 đã được tạo",
+    type: "info",
+    timestamp: new Date(Date.now() - 1000 * 60 * 5),
     read: false,
   },
   {
     id: 2,
-    title: 'Cập nhật sản phẩm',
+    title: "Cập nhật sản phẩm",
     message: 'Sản phẩm "Laptop Dell XPS 13" đã được cập nhật',
-    type: 'success',
-    timestamp: new Date(Date.now() - 1000 * 60 * 30), // 30 minutes ago
+    type: "success",
+    timestamp: new Date(Date.now() - 1000 * 60 * 30),
     read: false,
   },
   {
     id: 3,
-    title: 'Cảnh báo bảo mật',
-    message: 'Đã phát hiện đăng nhập từ thiết bị mới',
-    type: 'warning',
-    timestamp: new Date(Date.now() - 1000 * 60 * 60 * 2), // 2 hours ago
+    title: "Cảnh báo bảo mật",
+    message: "Đã phát hiện đăng nhập từ thiết bị mới",
+    type: "warning",
+    timestamp: new Date(Date.now() - 1000 * 60 * 60 * 2),
     read: true,
   },
   {
     id: 4,
-    title: 'Lỗi hệ thống',
-    message: 'Không thể kết nối đến máy chủ báo cáo',
-    type: 'error',
-    timestamp: new Date(Date.now() - 1000 * 60 * 60 * 5), // 5 hours ago
+    title: "Lỗi hệ thống",
+    message: "Không thể kết nối đến máy chủ báo cáo",
+    type: "error",
+    timestamp: new Date(Date.now() - 1000 * 60 * 60 * 5),
     read: true,
   },
 ];
@@ -69,8 +65,7 @@ const NotificationCenter: React.FC = () => {
   const [unreadCount, setUnreadCount] = useState(0);
 
   useEffect(() => {
-    // Calculate unread count
-    const count = notifications.filter(notification => !notification.read).length;
+    const count = notifications.filter((n) => !n.read).length;
     setUnreadCount(count);
   }, [notifications]);
 
@@ -78,41 +73,33 @@ const NotificationCenter: React.FC = () => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const handleClose = () => setAnchorEl(null);
 
   const handleMarkAsRead = (id: number) => {
-    setNotifications(
-      notifications.map(notification =>
-        notification.id === id ? { ...notification, read: true } : notification
-      )
+    setNotifications((prev) =>
+      prev.map((n) => (n.id === id ? { ...n, read: true } : n))
     );
   };
 
   const handleMarkAllAsRead = () => {
-    setNotifications(
-      notifications.map(notification => ({ ...notification, read: true }))
-    );
+    setNotifications((prev) => prev.map((n) => ({ ...n, read: true })));
   };
 
   const handleDelete = (id: number) => {
-    setNotifications(notifications.filter(notification => notification.id !== id));
+    setNotifications((prev) => prev.filter((n) => n.id !== id));
   };
 
-  const handleClearAll = () => {
-    setNotifications([]);
-  };
+  const handleClearAll = () => setNotifications([]);
 
   const getNotificationIcon = (type: string) => {
     switch (type) {
-      case 'success':
+      case "success":
         return <CheckCircleIcon color="success" />;
-      case 'error':
+      case "error":
         return <ErrorIcon color="error" />;
-      case 'warning':
+      case "warning":
         return <WarningIcon color="warning" />;
-      case 'info':
+      case "info":
       default:
         return <InfoIcon color="info" />;
     }
@@ -125,13 +112,9 @@ const NotificationCenter: React.FC = () => {
     const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
     const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
 
-    if (diffMins < 60) {
-      return `${diffMins} phút trước`;
-    } else if (diffHours < 24) {
-      return `${diffHours} giờ trước`;
-    } else {
-      return `${diffDays} ngày trước`;
-    }
+    if (diffMins < 60) return `${diffMins} phút trước`;
+    else if (diffHours < 24) return `${diffHours} giờ trước`;
+    else return `${diffDays} ngày trước`;
   };
 
   return (
@@ -143,15 +126,14 @@ const NotificationCenter: React.FC = () => {
           </Badge>
         </IconButton>
       </Tooltip>
+
       <Menu
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
         onClose={handleClose}
-        PaperProps={{
-          sx: { width: 360, maxHeight: 500 },
-        }}
+        PaperProps={{ sx: { width: 360, maxHeight: 500 } }}
       >
-        <Box sx={{ p: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Box sx={{ p: 2, display: "flex", justifyContent: "space-between" }}>
           <Typography variant="h6">Thông báo</Typography>
           <Box>
             <Tooltip title="Cài đặt thông báo">
@@ -169,75 +151,93 @@ const NotificationCenter: React.FC = () => {
           </Box>
         </Box>
         <Divider />
+
         {notifications.length > 0 ? (
-          <>
-            <Box sx={{ p: 1, display: 'flex', justifyContent: 'flex-end' }}>
+          [
+            <Box
+              key="header"
+              sx={{
+                px: 2,
+                pb: 1,
+                display: "flex",
+                justifyContent: "flex-end",
+              }}
+            >
               <Button size="small" onClick={handleMarkAllAsRead}>
                 Đánh dấu tất cả đã đọc
               </Button>
-            </Box>
-            <List sx={{ p: 0 }}>
-              {notifications.map((notification) => (
-                <React.Fragment key={notification.id}>
-                  <ListItem
-                    sx={{
-                      bgcolor: notification.read ? 'transparent' : 'action.hover',
-                      '&:hover': { bgcolor: 'action.selected' },
-                    }}
-                    secondaryAction={
-                      <IconButton
-                        edge="end"
-                        size="small"
-                        onClick={() => handleDelete(notification.id)}
-                      >
-                        <DeleteIcon fontSize="small" />
-                      </IconButton>
-                    }
-                  >
-                    <ListItemIcon>
-                      {getNotificationIcon(notification.type)}
-                    </ListItemIcon>
-                    <ListItemText
-                      primary={
-                        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                          <Typography variant="subtitle2" component="span">
-                            {notification.title}
-                          </Typography>
-                          {!notification.read && (
-                            <CircleIcon
-                              color="primary"
-                              sx={{ fontSize: 10, ml: 1 }}
-                            />
-                          )}
-                        </Box>
+            </Box>,
+
+            <List key="list">
+              {notifications
+                .slice()
+                .sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime())
+                .map((n) => (
+                  <React.Fragment key={n.id}>
+                    <ListItem
+                      alignItems="flex-start"
+                      sx={{
+                        bgcolor: n.read ? "transparent" : "action.hover",
+                        "&:hover": { bgcolor: "action.selected" },
+                        cursor: "pointer",
+                      }}
+                      onClick={() => handleMarkAsRead(n.id)}
+                      secondaryAction={
+                        <IconButton
+                          edge="end"
+                          size="small"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleDelete(n.id);
+                          }}
+                        >
+                          <DeleteIcon fontSize="small" />
+                        </IconButton>
                       }
-                      secondary={
-                        <>
-                          <Typography variant="body2" component="span">
-                            {notification.message}
-                          </Typography>
-                          <Typography
-                            variant="caption"
-                            color="textSecondary"
-                            display="block"
-                          >
-                            {formatTimestamp(notification.timestamp)}
-                          </Typography>
-                        </>
-                      }
-                    />
-                  </ListItem>
-                  <Divider variant="inset" component="li" />
-                </React.Fragment>
-              ))}
-            </List>
-            <Box sx={{ p: 1, display: 'flex', justifyContent: 'center' }}>
+                    >
+                      <ListItemIcon>{getNotificationIcon(n.type)}</ListItemIcon>
+                      <ListItemText
+                        primary={
+                          <Box sx={{ display: "flex", alignItems: "center" }}>
+                            <Typography variant="subtitle2">
+                              {n.title}
+                            </Typography>
+                            {!n.read && (
+                              <CircleIcon
+                                color="primary"
+                                sx={{ fontSize: 10, ml: 1 }}
+                              />
+                            )}
+                          </Box>
+                        }
+                        secondary={
+                          <>
+                            <Typography variant="body2" component="span">
+                              {n.message}
+                            </Typography>
+                            <Typography
+                              variant="caption"
+                              color="text.secondary"
+                              display="block"
+                            >
+                              {formatTimestamp(n.timestamp)}
+                            </Typography>
+                          </>
+                        }
+                      />
+                    </ListItem>
+                    <Divider variant="inset" component="li" />
+                  </React.Fragment>
+                ))}
+            </List>,
+
+            <Box key="footer" sx={{ p: 1, textAlign: "center" }}>
               <Button size="small">Xem tất cả thông báo</Button>
-            </Box>
-          </>
+            </Box>,
+          ]
         ) : (
-          <Box sx={{ p: 3, textAlign: 'center' }}>
-            <Typography variant="body1" color="textSecondary">
+          <Box sx={{ p: 3, textAlign: "center" }}>
+            <Typography variant="body2" color="text.secondary">
               Không có thông báo
             </Typography>
           </Box>
@@ -247,4 +247,4 @@ const NotificationCenter: React.FC = () => {
   );
 };
 
-export default NotificationCenter; 
+export default NotificationCenter;

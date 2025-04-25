@@ -9,87 +9,69 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "report")
 public class Report {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String customername;
-    private double priceeach;
-    private double sales;
-    private String orderdate;
-    private String status;
-    private String productline;
+    private String orderDate;
+    private String productCode;
+    private String productName;
+    private String category;
     private int quantity;
+    private double price;
+    private double priceSummary;
     private String city;
-    private String country;
-    // Constructor
-    public Report(String customername, double priceeach, double sales, String orderdate, String status, 
-                 String productline, int quantity, String city, String country) {
-        this.customername = customername;
-        this.priceeach = priceeach;
-        this.sales = sales;
-        this.orderdate = orderdate;
-        this.status = status;
-        this.productline = productline;
+
+    // Constructor with parameters
+    public Report(String orderDate, String productCode, String productName, String category, 
+                  int quantity, double price, double priceSummary, String city) {
+        this.orderDate = orderDate;
+        this.productCode = productCode;
+        this.productName = productName;
+        this.category = category;
         this.quantity = quantity;
+        this.price = price;
+        this.priceSummary = priceSummary;
         this.city = city;
-        this.country = country;
-    }
-      // Getter và Setter cho customername
-    public String getCustomername() {
-        return customername;
+        // Add the country property if needed.
     }
 
-    public void setCustomername(String customername) {
-        this.customername = customername;
+    // Default constructor (no-args)
+    public Report() {}
+
+    // Getters and setters
+    public String getOrderDate() {
+        return orderDate;
     }
 
-    // Getter và Setter cho priceeach
-    public double getPriceeach() {
-        return priceeach;
+    public void setOrderDate(String orderDate) {
+        this.orderDate = orderDate;
     }
 
-    public void setPriceeach(double priceeach) {
-        this.priceeach = priceeach;
+    public String getProductCode() {
+        return productCode;
     }
 
-    // Getter và Setter cho sales
-    public double getSales() {
-        return sales;
+    public void setProductCode(String productCode) {
+        this.productCode = productCode;
     }
 
-    public void setSales(double sales) {
-        this.sales = sales;
+    public String getProductName() {
+        return productName;
     }
 
-    // Getter và Setter cho orderdate
-    public String getOrderdate() {
-        return orderdate;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
-    public void setOrderdate(String orderdate) {
-        this.orderdate = orderdate;
+    public String getCategory() {
+        return category;
     }
 
-    // Getter và Setter cho status
-    public String getStatus() {
-        return status;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    // Getter và Setter cho productline
-    public String getProductline() {
-        return productline;
-    }
-
-    public void setProductline(String productline) {
-        this.productline = productline;
-    }
-
-    // Getter và Setter cho quantity
     public int getQuantity() {
         return quantity;
     }
@@ -98,7 +80,22 @@ public class Report {
         this.quantity = quantity;
     }
 
-    // Getter và Setter cho city
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public double getPriceSummary() {
+        return priceSummary;
+    }
+
+    public void setPriceSummary(double priceSummary) {
+        this.priceSummary = priceSummary;
+    }
+
     public String getCity() {
         return city;
     }
@@ -107,12 +104,5 @@ public class Report {
         this.city = city;
     }
 
-    // Getter và Setter cho country
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
+    // Add getter and setter for country if necessary
 }

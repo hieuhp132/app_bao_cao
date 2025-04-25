@@ -11,15 +11,12 @@ export interface User {
 
 // Product related types
 export interface Product {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  category: string;
-  stock: number;
-  images: string[];
-  createdAt: string;
-  updatedAt: string;
+  productName: string;
+  productDescription: string;
+  productPrice: number;
+  productCategory: string;
+  quantityStock: number;
+  productImage: string;
 }
 
 // Order related types
@@ -32,7 +29,7 @@ export interface Order {
     price: number;
   }[];
   totalAmount: number;
-  status: 'pending' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
+  status: "pending" | "processing" | "shipped" | "delivered" | "cancelled";
   shippingAddress: string;
   createdAt: string;
   updatedAt: string;
@@ -43,8 +40,8 @@ export interface SupportTicket {
   id: string;
   subject: string;
   description: string;
-  status: 'open' | 'in_progress' | 'closed';
-  priority: 'low' | 'medium' | 'high';
+  status: "open" | "in_progress" | "closed";
+  priority: "low" | "medium" | "high";
   category: string;
   userId: string;
   createdAt: string;
@@ -65,4 +62,4 @@ export interface PaginatedResponse<T> {
   page: number;
   limit: number;
   totalPages: number;
-} 
+}

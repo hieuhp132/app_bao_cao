@@ -1,31 +1,32 @@
 version: "3.8"
 
 services:
-  app:
-    build: .
-    ports:
-      - "8082:8082"
-    environment:
-      - SERVER_PORT=8082
-      - SPRING_DATASOURCE_URL=jdbc:mariadb://host.docker.internal:3307/database_test
-      - SPRING_DATASOURCE_USERNAME=tuananhdev
-      - SPRING_DATASOURCE_PASSWORD=123456789
-    depends_on:
-      - mariadb
-    restart: unless-stopped
-
-  mariadb:
+  database:
     image: mariadb:10.6
+    container_name: mariadb
+    restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=rootpassword
-      - MYSQL_DATABASE=database_test
-      - MYSQL_USER=tuananhdev
-      - MYSQL_PASSWORD=123456789
+      MARIADB_ROOT_PASSWORD: rootpassword
+      MARIADB_DATABASE: database_test
+      MARIADB_USER: tuananhdev
+      MARIADB_PASSWORD: 123456789
     ports:
-      - "3307:3306"
+      - "3308:3306"
     volumes:
       - mariadb_data:/var/lib/mysql
-    restart: unless-stopped
+
+  backend:
+    image: tuananhdev911/spring-boot-app:latest # Đảm bảo bạn đã push image lên Docker Hub
+    container_name: spring-boot-app
+    restart: always
+    ports:
+      - "8082:8082"
+    depends_on:
+      - database
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mariadb://database:3308/database_test
+      SPRING_DATASOURCE_USERNAME: tuananhdev
+      SPRING_DATASOURCE_PASSWORD: 123456789
 
 volumes:
   mariadb_data:
