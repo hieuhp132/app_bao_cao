@@ -1,5 +1,4 @@
 package myapp.config;
-import myapp.config.DatabaseConnect;  // Import đúng package của DatabaseConnect
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

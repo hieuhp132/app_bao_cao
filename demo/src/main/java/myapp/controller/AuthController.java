@@ -17,7 +17,7 @@ public class AuthController {
     // Đăng nhập, trả về token nếu thành công
     @PostMapping("/login")
     public ResponseEntity<JwtResponse> login(@RequestBody AuthRequest authRequest) {
-        String token = authService.login(authRequest.getUsername(), authRequest.getPassword());
+        String token = authService.login(authRequest.getMaillogin(), authRequest.getPassword());
         return ResponseEntity.ok(new JwtResponse(token));
     }
 }

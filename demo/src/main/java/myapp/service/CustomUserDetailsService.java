@@ -16,13 +16,13 @@ public class CustomUserDetailsService implements UserDetailsService {
     private UserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username)
+    public UserDetails loadUserByUsername(String maillogin) throws UsernameNotFoundException {
+        User user = userRepository.findByMaillogin(maillogin)
                 .orElseThrow(() ->
-                        new UsernameNotFoundException("Không tìm thấy người dùng: " + username));
+                        new UsernameNotFoundException("Không tìm thấy người dùng: " + maillogin));
 
         return new org.springframework.security.core.userdetails.User(
-                user.getUsername(),
+                user.getMaillogin(),
                 user.getPassword(),
                 Collections.singletonList(new SimpleGrantedAuthority(user.getRole()))
         );

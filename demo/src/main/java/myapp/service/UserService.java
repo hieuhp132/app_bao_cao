@@ -22,9 +22,10 @@ public class UserService {
     @Bean
     public CommandLineRunner init(UserRepository userRepo, PasswordEncoder encoder) {
         return args -> {
-            if (userRepo.findByUsername("admin@gmail.com").isEmpty()) {
+            if (userRepo.findByMaillogin("admin@gmail.com").isEmpty()) {
                 User admin = new User();
-                admin.setUsername("admin@gmail.com");
+                admin.setMaillogin("admin@gmail.com");
+                admin.setUsername("Admin User");
                 admin.setPassword(encoder.encode("123456"));
                 admin.setRole("ADMIN");
                 userRepo.save(admin);
@@ -38,9 +39,10 @@ public class UserService {
     @Bean
     CommandLineRunner run(UserRepository userRepo, PasswordEncoder encoder) {
     return args -> {
-        if (userRepo.findByUsername("user1@gmail.com").isEmpty()) {
+        if (userRepo.findByMaillogin("user1@gmail.com").isEmpty()) {
             User user = new User();
-            user.setUsername("user1@gmail.com");
+            user.setMaillogin("user1@gmail.com");
+            user.setUsername("User 1");
             user.setPassword(encoder.encode("user123")); // mật khẩu mã hóa
             user.setRole("USER");
             userRepo.save(user);

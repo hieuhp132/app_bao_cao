@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -54,7 +56,7 @@ public class CsvToDB {
             throw new IOException("Lỗi định dạng CSV: " + e.getMessage(), e);
         }
     }
-
+    
     // Tách logic ra ngoài để dễ kiểm tra và bảo trì
     private Report mapToReport(String[] data) {
         try {
@@ -62,7 +64,7 @@ public class CsvToDB {
                 throw new IllegalArgumentException("Dữ liệu thiếu cột: " + String.join(",", data));
             }
             return new Report(
-        cleanString(data[0].trim()),  // orderDate
+        cleanString((data[0].trim())),  // orderDate
         cleanString(data[1].trim()),  // productCode
         cleanString(data[2].trim()),  // productName
         cleanString(data[3].trim()),  // category
@@ -76,6 +78,9 @@ public class CsvToDB {
             return null;  // Trả về null nếu có lỗi
         }
     }
+
+
+
     private String cleanString(String input) {
         if (input == null) {
             return null;

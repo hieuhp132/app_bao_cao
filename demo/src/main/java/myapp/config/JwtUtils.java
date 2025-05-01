@@ -20,9 +20,11 @@ public class JwtUtils {
     }
 
     // Tạo JWT token
-    public String generateToken(String username) {
+    public String generateToken(String maillogin, String username, String role) {
         return Jwts.builder()
-                .setSubject(username)
+                .setSubject(maillogin)
+                .claim("username", username)
+                .claim("role", role)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + jwtExpirationMs))
                 .signWith(getSigningKey(), SignatureAlgorithm.HS512)
@@ -49,6 +51,27 @@ public class JwtUtils {
                             .build()
                             .parseClaimsJws(token)
                             .getBody();
+        return claims.get("username", String.class); // Lấy đúng claim 'username'
+    }
+
+    public String getRoleFromToken(String token) {
+        Claims claims = extractAllClaims(token);
+        return claims.get("role", String.class); // 
+    }
+
+    public String getMailFromToken(String token) {
+        Claims claims = Jwts.parserBuilder()
+                            .setSigningKey(getSigningKey())
+                            .build()
+                            .parseClaimsJws(token)
+                            .getBody();
         return claims.getSubject();
+    }
+    private Claims extractAllClaims(String token) {
+        return Jwts.parserBuilder()
+                   .setSigningKey(getSigningKey())
+                   .build()
+                   .parseClaimsJws(token)
+                   .getBody();
     }
 }

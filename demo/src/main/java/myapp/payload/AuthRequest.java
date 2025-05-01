@@ -2,22 +2,22 @@ package myapp.payload;
 
 public class AuthRequest {
 
-    private String username;
+    private String maillogin;
     private String password;
 
     public AuthRequest() {}
 
-    public AuthRequest(String username, String password) {
-        this.username = username;
+    public AuthRequest(String maillogin, String password) {
+        this.maillogin = maillogin;
         this.password = password;
     }
 
-    public String getUsername() {
-        return username;
+    public String getMaillogin() {
+        return maillogin;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setMaillogin(String maillogin) {
+        this.maillogin = maillogin;
     }
 
     public String getPassword() {
