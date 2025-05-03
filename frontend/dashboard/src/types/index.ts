@@ -1,16 +1,18 @@
 // User related types
 export interface User {
   id: string;
+  sub: string;
   username: string;
-  email: string;
   role: string;
   avatar?: string;
-  createdAt: string;
-  updatedAt: string;
+
+  // createdAt: string;
+  // updatedAt: string;
 }
 
 // Product related types
 export interface Product {
+  id: string;
   productName: string;
   productDescription: string;
   productPrice: number;

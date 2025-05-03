@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Typography,
@@ -15,14 +15,15 @@ import {
   Tab,
   Switch,
   FormControlLabel,
-} from '@mui/material';
+} from "@mui/material";
 import {
   Edit as EditIcon,
   Save as SaveIcon,
   Cancel as CancelIcon,
   PhotoCamera as PhotoCameraIcon,
-} from '@mui/icons-material';
-
+} from "@mui/icons-material";
+import { jwtDecode } from "jwt-decode";
+import { User } from "../types";
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
@@ -40,11 +41,7 @@ function TabPanel(props: TabPanelProps) {
       aria-labelledby={`profile-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          {children}
-        </Box>
-      )}
+      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
     </div>
   );
 }
@@ -52,22 +49,31 @@ function TabPanel(props: TabPanelProps) {
 const UserProfile: React.FC = () => {
   const [tabValue, setTabValue] = useState(0);
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState('');
-  const [error, setError] = useState('');
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
   const [isEditing, setIsEditing] = useState(false);
-  
+
+  const [userData, setUserData] = useState<User | null>(null);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const decoded: User = jwtDecode(token);
+      const temp = decoded;
+      setUserData(temp);
+    }
+  }, []);
   // Mock user data - replace with API call
-  const [userData, setUserData] = useState({
-    id: 1,
-    name: 'Admin User',
-    email: 'admin@example.com',
-    role: 'Admin',
-    department: 'IT',
-    phone: '+84 123 456 789',
-    avatar: '',
-    joinDate: '2023-01-01',
-    lastLogin: '2023-06-15 14:30',
-  });
+  // const [userData, setUserData] = useState({
+  //   id: 0,
+  //   name: "Admin User",
+  //   email: "admin@example.com",
+  //   role: "Admin",
+  //   department: "IT",
+  //   phone: "+84 123 456 789",
+  //   avatar: "",
+  //   joinDate: "2023-01-01",
+  //   lastLogin: "2023-06-15 14:30",
+  // });
 
   const [formData, setFormData] = useState({ ...userData });
   const [notificationSettings, setNotificationSettings] = useState({
@@ -105,24 +111,24 @@ const UserProfile: React.FC = () => {
   const handleCancel = () => {
     setIsEditing(false);
     setFormData({ ...userData });
-    setError('');
+    setError("");
   };
 
   const handleSave = async () => {
     setLoading(true);
-    setError('');
-    setSuccess('');
+    setError("");
+    setSuccess("");
 
     try {
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
       // Update user data
-      setUserData({ ...formData });
-      setSuccess('Thông tin cá nhân đã được cập nhật thành công');
+      setSuccess("Thông tin cá nhân đã được cập nhật thành công");
       setIsEditing(false);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
-      setError('Đã xảy ra lỗi khi cập nhật thông tin. Vui lòng thử lại sau.');
+      setError("Đã xảy ra lỗi khi cập nhật thông tin. Vui lòng thử lại sau.");
     } finally {
       setLoading(false);
     }
@@ -161,15 +167,15 @@ const UserProfile: React.FC = () => {
 
         <TabPanel value={tabValue} index={0}>
           <Grid container spacing={3}>
-            <Grid item xs={12} md={4} sx={{ textAlign: 'center' }}>
-              <Box sx={{ position: 'relative', display: 'inline-block' }}>
+            <Grid item xs={12} md={4} sx={{ textAlign: "center" }}>
+              <Box sx={{ position: "relative", display: "inline-block" }}>
                 <Avatar
                   src={formData.avatar}
                   sx={{ width: 150, height: 150, mb: 2 }}
                 />
                 <input
                   accept="image/*"
-                  style={{ display: 'none' }}
+                  style={{ display: "none" }}
                   id="avatar-upload"
                   type="file"
                   onChange={handleAvatarChange}
@@ -185,8 +191,8 @@ const UserProfile: React.FC = () => {
                   </IconButton>
                 </label>
               </Box>
-              <Typography variant="h6">{formData.name}</Typography>
-              <Typography color="textSecondary">{formData.role}</Typography>
+              <Typography variant="h6">{userData?.username}</Typography>
+              <Typography color="textSecondary">{userData?.role}</Typography>
             </Grid>
 
             <Grid item xs={12} md={8}>
@@ -206,10 +212,11 @@ const UserProfile: React.FC = () => {
                   <TextField
                     fullWidth
                     label="Họ và tên"
-                    name="name"
-                    value={formData.name}
+                    name="username"
+                    value={userData?.username || ""}
                     onChange={handleChange}
                     disabled={!isEditing}
+                    variant="outlined"
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -217,8 +224,9 @@ const UserProfile: React.FC = () => {
                     fullWidth
                     label="Email"
                     name="email"
-                    value={formData.email}
-                    disabled
+                    value={userData?.sub || ""}
+                    disabled={!isEditing}
+                    variant="outlined"
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -259,7 +267,7 @@ const UserProfile: React.FC = () => {
                 </Grid>
               </Grid>
 
-              <Box sx={{ mt: 3, display: 'flex', justifyContent: 'flex-end' }}>
+              <Box sx={{ mt: 3, display: "flex", justifyContent: "flex-end" }}>
                 {isEditing ? (
                   <>
                     <Button
@@ -272,7 +280,9 @@ const UserProfile: React.FC = () => {
                     </Button>
                     <Button
                       variant="contained"
-                      startIcon={loading ? <CircularProgress size={20} /> : <SaveIcon />}
+                      startIcon={
+                        loading ? <CircularProgress size={20} /> : <SaveIcon />
+                      }
                       onClick={handleSave}
                       disabled={loading}
                     >
@@ -298,7 +308,7 @@ const UserProfile: React.FC = () => {
             Cài đặt thông báo
           </Typography>
           <Divider sx={{ mb: 2 }} />
-          
+
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <FormControlLabel
@@ -361,8 +371,8 @@ const UserProfile: React.FC = () => {
               />
             </Grid>
           </Grid>
-          
-          <Box sx={{ mt: 3, display: 'flex', justifyContent: 'flex-end' }}>
+
+          <Box sx={{ mt: 3, display: "flex", justifyContent: "flex-end" }}>
             <Button variant="contained" color="primary">
               Lưu cài đặt
             </Button>
@@ -374,7 +384,7 @@ const UserProfile: React.FC = () => {
             Bảo mật
           </Typography>
           <Divider sx={{ mb: 2 }} />
-          
+
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <Typography variant="subtitle1" sx={{ mb: 1 }}>
@@ -389,11 +399,7 @@ const UserProfile: React.FC = () => {
                   />
                 </Grid>
                 <Grid item xs={12} sm={4}>
-                  <TextField
-                    fullWidth
-                    label="Mật khẩu mới"
-                    type="password"
-                  />
+                  <TextField fullWidth label="Mật khẩu mới" type="password" />
                 </Grid>
                 <Grid item xs={12} sm={4}>
                   <TextField
@@ -409,7 +415,7 @@ const UserProfile: React.FC = () => {
                 </Button>
               </Box>
             </Grid>
-            
+
             <Grid item xs={12}>
               <Typography variant="subtitle1" sx={{ mb: 1 }}>
                 Xác thực hai yếu tố
@@ -419,11 +425,11 @@ const UserProfile: React.FC = () => {
                 label="Bật xác thực hai yếu tố"
               />
               <Typography variant="body2" color="textSecondary" sx={{ mt: 1 }}>
-                Khi bật tính năng này, bạn sẽ cần nhập mã xác thực từ ứng dụng xác thực
-                hoặc mã được gửi qua SMS mỗi khi đăng nhập.
+                Khi bật tính năng này, bạn sẽ cần nhập mã xác thực từ ứng dụng
+                xác thực hoặc mã được gửi qua SMS mỗi khi đăng nhập.
               </Typography>
             </Grid>
-            
+
             <Grid item xs={12}>
               <Typography variant="subtitle1" sx={{ mb: 1 }}>
                 Phiên đăng nhập
@@ -442,4 +448,4 @@ const UserProfile: React.FC = () => {
   );
 };
 
-export default UserProfile; 
+export default UserProfile;

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   Paper,
@@ -10,42 +10,52 @@ import {
   Link,
   Alert,
   CircularProgress,
-} from '@mui/material';
-import { LockOutlined } from '@mui/icons-material';
-
+  IconButton,
+  InputAdornment,
+} from "@mui/material";
+import { LockOutlined } from "@mui/icons-material";
+import axios from "axios";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+const apiURL = import.meta.env.VITE_API_URL;
 const Login: React.FC = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
   const [errors, setErrors] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
   const [loading, setLoading] = useState(false);
-  const [loginError, setLoginError] = useState('');
+  const [loginError, setLoginError] = useState("");
 
   const validateForm = () => {
     let isValid = true;
     const newErrors = {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     };
 
     if (!formData.email) {
-      newErrors.email = 'Email là bắt buộc';
+      newErrors.email = "Email là bắt buộc";
       isValid = false;
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email không hợp lệ';
+      newErrors.email = "Email không hợp lệ";
       isValid = false;
     }
 
     if (!formData.password) {
-      newErrors.password = 'Mật khẩu là bắt buộc';
+      newErrors.password = "Mật khẩu là bắt buộc";
       isValid = false;
     } else if (formData.password.length < 6) {
-      newErrors.password = 'Mật khẩu phải có ít nhất 6 ký tự';
+      newErrors.password = "Mật khẩu phải có ít nhất 6 ký tự";
       isValid = false;
     }
 
@@ -63,14 +73,14 @@ const Login: React.FC = () => {
     if (errors[name as keyof typeof errors]) {
       setErrors({
         ...errors,
-        [name]: '',
+        [name]: "",
       });
     }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoginError('');
+    setLoginError("");
 
     if (!validateForm()) {
       return;
@@ -81,19 +91,28 @@ const Login: React.FC = () => {
     try {
       // TODO: Replace with actual API call
       // Simulating API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-
-      // For demo purposes, using hardcoded credentials
-      if (formData.email === 'admin@example.com' && formData.password === 'password123') {
-        // Store token in localStorage
-        localStorage.setItem('token', 'mock-token-123');
-        localStorage.setItem('userRole', 'admin');
-        navigate('/');
-      } else {
-        setLoginError('Email hoặc mật khẩu không đúng');
+      //await new Promise((resolve) => setTimeout(resolve, 1000));
+      const response = await axios.post(
+        `${apiURL}/api/auth/login`,
+        {
+          maillogin: formData.email,
+          password: formData.password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const dataForToken = await response.data;
+      console.log(dataForToken);
+      if (dataForToken.token) {
+        localStorage.setItem("token", dataForToken.token);
+        navigate("/");
       }
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      setLoginError('Đã xảy ra lỗi. Vui lòng thử lại sau.');
+      setLoginError("Đã xảy ra lỗi. Vui lòng thử lại sau.");
     } finally {
       setLoading(false);
     }
@@ -102,30 +121,30 @@ const Login: React.FC = () => {
   return (
     <Box
       sx={{
-        height: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        bgcolor: 'background.default',
+        height: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        bgcolor: "background.default",
       }}
     >
       <Paper
         elevation={3}
         sx={{
           p: 4,
-          width: '100%',
+          width: "100%",
           maxWidth: 400,
         }}
       >
         <Box
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
             mb: 3,
           }}
         >
-          <LockOutlined sx={{ fontSize: 40, color: 'primary.main', mb: 1 }} />
+          <LockOutlined sx={{ fontSize: 40, color: "primary.main", mb: 1 }} />
           <Typography component="h1" variant="h5">
             Đăng nhập
           </Typography>
@@ -161,14 +180,27 @@ const Login: React.FC = () => {
                 fullWidth
                 name="password"
                 label="Mật khẩu"
-                type="password"
+                type={showPassword ? "text" : "password"} // Thay đổi kiểu input giữa 'text' và 'password'
                 id="password"
                 autoComplete="current-password"
                 value={formData.password}
                 onChange={handleChange}
-                error={!!errors.password}
-                helperText={errors.password}
-                disabled={loading}
+                error={false} // Thay đổi nếu có lỗi trong quá trình kiểm tra
+                helperText={false} // Thêm helper text nếu có lỗi
+                disabled={false} // Điều chỉnh nếu muốn vô hiệu hóa khi đang tải
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={togglePasswordVisibility}
+                        edge="end"
+                      >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
               />
             </Grid>
             <Grid item xs={12}>
@@ -179,11 +211,11 @@ const Login: React.FC = () => {
                 disabled={loading}
                 sx={{ mt: 1, mb: 2 }}
               >
-                {loading ? <CircularProgress size={24} /> : 'Đăng nhập'}
+                {loading ? <CircularProgress size={24} /> : "Đăng nhập"}
               </Button>
             </Grid>
             <Grid item xs={12}>
-              <Box sx={{ textAlign: 'center' }}>
+              <Box sx={{ textAlign: "center" }}>
                 <Link href="#" variant="body2">
                   Quên mật khẩu?
                 </Link>
@@ -196,4 +228,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login; 
+export default Login;
