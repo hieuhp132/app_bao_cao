@@ -6,27 +6,39 @@ services:
     container_name: mariadb
     restart: always
     environment:
-      MARIADB_ROOT_PASSWORD: rootpassword
-      MARIADB_DATABASE: database_test
-      MARIADB_USER: tuananhdev
-      MARIADB_PASSWORD: 123456789
+      #MARIADB_ROOT_PASSWORD: "" # Đặt mật khẩu cho user root của MariaDB
+      MARIADB_DATABASE: database_test # Đặt tên cơ sở dữ liệu cần tạo
+      MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: "yes"
     ports:
-      - "3308:3306"
+      - "3310:3306" # Ánh xạ cổng 3306 của container sang 3308 trên máy host
     volumes:
-      - mariadb_data:/var/lib/mysql
+      - mariadb_data:/var/lib/mysql # Lưu trữ dữ liệu MariaDB bên ngoài container
+    networks:
+      - backend_network
 
   backend:
-    image: tuananhdev911/spring-boot-app:latest # Đảm bảo bạn đã push image lên Docker Hub
-    container_name: spring-boot-app
+    image: mybackend-app:latest # Sử dụng image mà bạn đã build
+    container_name: backend-app
     restart: always
     ports:
-      - "8082:8082"
-    depends_on:
-      - database
+      - "8083:8083" # Ánh xạ cổng 8083 của container sang 8083 trên máy host
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mariadb://database:3308/database_test
-      SPRING_DATASOURCE_USERNAME: tuananhdev
-      SPRING_DATASOURCE_PASSWORD: 123456789
+      SPRING_PROFILES_ACTIVE: docker # Thêm biến môi trường mà bạn đã sử dụng khi chạy docker run
+      SPRING_DATASOURCE_URL: jdbc:mariadb://database:3306/database_test # Kết nối đến MariaDB trong container 'database'
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: "" # Mật khẩu cho MariaDB
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.mariadb.jdbc.Driver
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: "true"
+    depends_on:
+      - database # Đảm bảo backend khởi động sau khi MariaDB đã sẵn sàng
+    networks:
+      - backend_network
 
 volumes:
   mariadb_data:
+    driver: local # Dữ liệu MariaDB sẽ được lưu trong volume này
+
+networks:
+  backend_network:
+    driver: bridge # Mạng bridge để các container có thể giao tiếp với nhau
